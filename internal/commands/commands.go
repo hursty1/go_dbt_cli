@@ -13,7 +13,7 @@ func Run(config config.CommandConfig) error {
 		return err
 	}
 	// pf("RUN COMMAND")
-	// pf("CONFIG: %v",config)
+	pf("CONFIG: %v\n",config)
 	if config.Active {
 		DisplayActive(dbtCloudConfig)
 		// return nil
@@ -24,14 +24,32 @@ func Run(config config.CommandConfig) error {
 	}
 
 	//process change
+	if config.Action != "" {
+		switch config.Action {
+		case "action":
+			fmt.Println(config.ProjectName)
+		default:
+			fmt.Println("Invalid Action")
+		}
+	}
 
 	return nil
 }
+
+// dbt cloud set active-project --project-name "Name of Game 1"
 var pf = fmt.Printf
+
+func ActivateProject(config dbtcloud.DbtCloudConfig, project string) error {
+	//verify project exists
+	//if exists execute cli command dbt cloud set active-project --project-name "Name of Game 1"
+	//
+
+	return nil
+}
 func DisplayActive(config dbtcloud.DbtCloudConfig) {
 	activeProject := ""
 	for _, project := range config.Projects {
-		if project.AccountId == config.Context.ActiveProject {
+		if project.ProjectId == config.Context.ActiveProject {
 			activeProject = project.ProjectName
 		}
 	}
