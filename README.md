@@ -4,7 +4,7 @@ Helper application to automate some DBT Cloud Functions
 
 ## Installing
 
-go install github.com/hursty1/dbt_helper/cmd/dbthelper@latest
+go install github.com/hursty1/go_dbt_cli/cmd/dbthelper@latest
 
 or 
 go build /cmd/dbthelper

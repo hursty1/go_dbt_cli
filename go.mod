@@ -1,4 +1,4 @@
-module github.com/hursty1/dbt_helper_go
+module github.com/hursty1/go_dbt_cli
 
 go 1.21.5
 
