@@ -43,7 +43,8 @@ func Execute() {
 	rootCmd.AddCommand(listCmd)
 	rootCmd.AddCommand(activeCmd)
 	rootCmd.AddCommand(activateCmd)
-
+	rootCmd.AddCommand(versionCmd)
+	rootCmd.AddCommand(selectCmd)
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println("Error:", err)
 		os.Exit(1)
