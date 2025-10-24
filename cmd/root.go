@@ -16,9 +16,9 @@ var (
 
 // Root command
 var rootCmd = &cobra.Command{
-	Use:   "dbtctl",
+	Use:   "dbthelper",
 	Short: "A helper tool for managing dbt Cloud projects",
-	Long:  "dbtctl allows you to list, activate, and inspect dbt Cloud projects based on your local ~/.dbt/dbt_cloud.yml file.",
+	Long:  "dbthelper allows you to list, activate, and inspect dbt Cloud projects based on your local ~/.dbt/dbt_cloud.yml file.",
 	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 		// Locate and load config
 		home, err := os.UserHomeDir()
