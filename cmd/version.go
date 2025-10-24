@@ -12,9 +12,9 @@ import (
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "Print the current version of sshelp",
+	Short: "Print the current version of dbthelper",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("sshelp version:", version.Get())
+		fmt.Println("dbthelper version:", version.Get())
 		latest, err := LatestVersion()
 		if err != nil {
 			fmt.Println("update check failed:", err)

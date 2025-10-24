@@ -10,6 +10,8 @@ or
 go build /cmd/dbthelper
 and place the artifact in a folder in your system path
 
+## Verify tag
+curl https://proxy.golang.org/github.com/hursty1/go_dbt_cli/cmd/dbthelper/@v/v0.1.7.info
 
 ## Features
 
