@@ -1,6 +1,6 @@
 package main
 
-import "github.com/hursty1/dbt_helper_go/cmd"
+import "github.com/hursty1/go_dbt_cli/cmd"
 
 func main() {
 	cmd.Execute()
