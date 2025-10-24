@@ -3,8 +3,8 @@ package commands
 import (
 	"fmt"
 
-	"github.com/hursty1/dbt_helper_go/internal/config"
-	"github.com/hursty1/dbt_helper_go/internal/dbtcloud"
+	"github.com/hursty1/go_dbt_cli/internal/config"
+	"github.com/hursty1/go_dbt_cli/internal/dbtcloud"
 )
 
 func Run(config config.CommandConfig) error {
