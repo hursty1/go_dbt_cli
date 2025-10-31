@@ -26,7 +26,17 @@ var selectCmd = &cobra.Command{
 	},
 }
 
+func project_id_from_name(project_name string) (string, error) {
+	projects := dbtConfig.Projects
 
+	for _, v := range projects {
+		if v.ProjectName == project_name {
+			// fmt.Printf("Found Project ID: %s\n", v.ProjectId)
+			return v.ProjectId, nil
+		}
+	}
+	return "", fmt.Errorf("Unable to find Project ID")
+}
 func selectProject() (string, error) {
 	if len(dbtConfig.Projects) == 0 {
 		return "", fmt.Errorf("No Projects configurations found.")
@@ -52,8 +62,13 @@ func selectProject() (string, error) {
 }
 
 
-func RunActivateProjectCommand(name string) error {
-	dbtCmd := exec.Command("dbt", "cloud", "set", "active-project", "--project-name", name)
+func RunActivateProjectCommand(project_name string) error {
+	// dbtCmd := exec.Command("dbt", "cloud", "set", "active-project", "--project-name", name)
+	project_id, err := project_id_from_name(project_name)
+	if err != nil {
+		return err
+	}
+	dbtCmd := exec.Command("dbt", "project", "--id", project_id)
 	// Connect stdout/stderr so it behaves like a real shell command
 	dbtCmd.Stdout = os.Stdout
 	dbtCmd.Stderr = os.Stderr
@@ -61,7 +76,7 @@ func RunActivateProjectCommand(name string) error {
 	// Optional: forward stdin too (for prompts)
 	dbtCmd.Stdin = os.Stdin
 
-	fmt.Printf("Running: dbt cloud set active-project --project-name %s\n", name)
+	fmt.Printf("Running: dbt cloud set active-project --project-id %s\n", project_id)
 
 	if err := dbtCmd.Run(); err != nil {
 		return fmt.Errorf("failed to activate project: %w", err)

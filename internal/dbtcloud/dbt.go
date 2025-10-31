@@ -37,7 +37,7 @@ func (s *StringInt) UnmarshalYAML(value *yaml.Node) error {
 
 type DbtProject struct {
 	ProjectName string `yaml:"project-name"`
-	ProjectId   StringInt    `yaml:"project-id"`
+	ProjectId   string    `yaml:"project-id"`
 	AccountName string `yaml:"account-name"`
 	AccountId   StringInt    `yaml:"account-id"`
 	AccountHost string `yaml:"account-host"`
@@ -47,7 +47,7 @@ type DbtProject struct {
 
 type DbtContext struct {
 	ActiveHost    string `yaml:"active-host"`
-	ActiveProject StringInt `yaml:"active-project"`
+	ActiveProject string `yaml:"active-project"`
 }
 type DbtCloudConfig struct {
 	Version  StringInt        `yaml:"version"`
